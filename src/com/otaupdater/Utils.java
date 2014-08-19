@@ -43,7 +43,9 @@ public class Utils {
     private static String cachedRcvrySdPath = null;
     private static String cachedRebootCmd = null;
     private static String cachedNoflash = null;
-    
+    private static String cachedServer = null;
+    private static String cachedVendor = null;
+
     public static boolean marketAvailable(Context ctx) {
         PackageManager pm = ctx.getPackageManager();
         try {
@@ -65,7 +67,7 @@ public class Utils {
         }
         return cachedRomID;
     }
-    
+
     public static String getOSSdPath() {
         if (cachedOSSdPath == null) {
             cachedOSSdPath = getprop(Config.OTA_SD_PATH_OS_PROP);
@@ -85,7 +87,7 @@ public class Utils {
     	}
     	return cachedRcvrySdPath;
     }
-    
+
     public static String getRebootCmd() {
         if (cachedRebootCmd == null) {
             cachedRebootCmd = getprop(Config.OTA_REBOOT_CMD_PROP);
@@ -95,7 +97,7 @@ public class Utils {
         }
         return cachedRebootCmd;
     }
-    
+
     public static boolean getNoflash() {
         if (cachedNoflash == null) {
             cachedNoflash = getprop(Config.OTA_NOFLASH_PROP);
@@ -105,7 +107,7 @@ public class Utils {
         }
         return cachedNoflash.equals("1") || cachedNoflash.equalsIgnoreCase("true");
     }
-    
+
     public static Date getOtaDate() {
         if (cachedOtaDate == null) {
             String otaDateStr = getprop(Config.OTA_DATE_PROP);
@@ -120,6 +122,20 @@ public class Utils {
             cachedOtaVer = getprop(Config.OTA_VER_PROP);
         }
         return cachedOtaVer;
+    }
+
+    public static String getOtaServer() {
+        if (cachedServer == null) {
+            cachedServer = getprop(Config.OTA_SERVER_PROP);
+        }
+        return cachedServer;
+    }
+
+    public static String getOtaVendor() {
+        if (cachedVendor == null) {
+            cachedVendor = getprop(Config.OTA_VENDOR_PROP);
+        }
+        return cachedVendor;
     }
 
     private static String getprop(String name) {

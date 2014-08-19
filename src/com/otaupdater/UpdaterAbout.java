@@ -27,7 +27,7 @@ import android.preference.PreferenceScreen;
 public class UpdaterAbout extends PreferenceActivity {
     private Preference teamPref;
     private Preference licensePref;
-    private Preference sitePref;
+    //private Preference sitePref;
 
     @Override
     @SuppressWarnings("deprecation")
@@ -43,7 +43,7 @@ public class UpdaterAbout extends PreferenceActivity {
             versionPref.setSummary(R.string.about_version_unknown);
         }
 
-        sitePref = findPreference("about_pref");
+        //sitePref = findPreference("about_pref");
         teamPref = findPreference("team_pref");
         licensePref = findPreference("license_pref");
     }
@@ -55,8 +55,8 @@ public class UpdaterAbout extends PreferenceActivity {
             startActivity(new Intent(UpdaterAbout.this, Contributors.class));
         } else if (preference == licensePref) {
             startActivity(new Intent(UpdaterAbout.this, License.class));
-        } else if (preference == sitePref) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.otaupdatecenter.pro")));
+        //} else if (preference == sitePref) {
+            //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.otaupdatecenter.pro")));
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }

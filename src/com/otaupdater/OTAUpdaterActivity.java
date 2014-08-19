@@ -317,10 +317,10 @@ public class OTAUpdaterActivity extends PreferenceActivity {
             i = new Intent(this, UpdaterAbout.class);
             startActivity(i);
             break;
-        case R.id.donate:
-            i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.DONATE_URL));
-            startActivity(i);
-            break;
+        //case R.id.donate:
+            //i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.DONATE_URL));
+            //startActivity(i);
+            //break;
         case R.id.exit:
             finish();
             break;

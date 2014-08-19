@@ -30,6 +30,8 @@ public class Config {
     public static final String OTA_ID_PROP = "otaupdater.otaid";
     public static final String OTA_VER_PROP = "otaupdater.otaver";
     public static final String OTA_DATE_PROP = "otaupdater.otatime";
+    public static final String OTA_SERVER_PROP = "otaupdater.server";
+    public static final String OTA_VENDOR_PROP = "otaupdater.vendor";
     public static final String OTA_SD_PATH_OS_PROP = "otaupdater.sdcard.os";
     public static final String OTA_SD_PATH_RECOVERY_PROP = "otaupdater.sdcard.recovery";
     public static final String OTA_REBOOT_CMD_PROP = "otaupdater.rebootcmd";

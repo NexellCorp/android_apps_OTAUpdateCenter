@@ -36,6 +36,8 @@ public class FetchRomInfoTask extends AsyncTask<Void, Void, RomInfo> {
     private RomInfoListener callback = null;
     private Context context = null;
     private String error = null;
+    private boolean vendorIsNexell = false;
+    private String serverAddress = null;
 
     public FetchRomInfoTask(Context ctx) {
         this(ctx, null);
@@ -62,13 +64,23 @@ public class FetchRomInfoTask extends AsyncTask<Void, Void, RomInfo> {
             return null;
         }
 
+        String vendor = Utils.getOtaVendor();
+        if (vendor != null && vendor.equalsIgnoreCase("NEXELL")) {
+            vendorIsNexell = true;
+            serverAddress = Utils.getOtaServer() + "/rom/";
+        } else {
+            serverAddress = Config.PULL_URL + "?";
+        }
+
         try {
             ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
             params.add(new BasicNameValuePair("device", android.os.Build.DEVICE.toLowerCase()));
             params.add(new BasicNameValuePair("rom", Utils.getRomID()));
+            if (vendorIsNexell)
+                params.add(new BasicNameValuePair("current_version", Utils.getOtaVersion()));
 
             HttpClient client = new DefaultHttpClient();
-            HttpGet get = new HttpGet(Config.PULL_URL + "?" + URLEncodedUtils.format(params, "UTF-8"));
+            HttpGet get = new HttpGet(serverAddress + URLEncodedUtils.format(params, "UTF-8"));
             HttpResponse r = client.execute(get);
             int status = r.getStatusLine().getStatusCode();
             HttpEntity e = r.getEntity();
